@@ -32,21 +32,25 @@ Este proyecto fue creado con fines **educativos y profesionales**, para:
 
 ---
 
-## 🧱 Estructura del proyecto
+## 📂 Estructura del proyecto
 
-selenium-ui-tests/
-├── src
-│ └── test
-│ └── java
-│ ├── base
-│ │ └── BaseTest.java
-│ ├── pages
-│ │ ├── LoginPage.java
-│ │ └── InventoryPage.java
-│ └── tests
-│ └── LoginTest.java
-├── pom.xml
+qa-automation-lab/
+├── selenium-ui-tests/
+│ ├── src/
+│ │ ├── test/
+│ │ │ └── java/
+│ │ │ ├── base/
+│ │ │ │ └── BaseTest.java
+│ │ │ ├── pages/
+│ │ │ │ ├── LoginPage.java
+│ │ │ │ └── InventoryPage.java
+│ │ │ └── tests/
+│ │ │ └── LoginTest.java
+│ ├── pom.xml
+├── docs/
+│ └── qa-flow.md
 └── README.md
+
 
 
 ---
