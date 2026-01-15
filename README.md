@@ -32,7 +32,6 @@ Este proyecto fue creado con fines **educativos y profesionales**, para:
 
 ---
 
-```markdown
 ## 📂 Estructura del proyecto
 
 ````text
@@ -52,8 +51,7 @@ qa-automation-lab/
 ├── docs/
 │   └── qa-flow.md
 └── README.md
-
-
+````
 
 ---
 
