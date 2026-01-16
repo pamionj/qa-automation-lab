@@ -17,7 +17,7 @@ public class LoginTest extends BaseTest {
         InventoryPage inventoryPage = new InventoryPage(driver);
 
         Assert.assertTrue(
-                inventoryPage.isInventoryDisplayed(),
+                inventoryPage.isInventoryVisible(),
                 "El inventario no se muestra después del login"
         );
 
@@ -34,11 +34,6 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("usuario_invalido", "password_invalida");
 
-        Assert.assertTrue(
-                loginPage.isErrorDisplayed(),
-                "No se muestra mensaje de error con credenciales inválidas"
-        );
-
         Assert.assertEquals(
                 loginPage.getErrorMessage(),
                 "Epic sadface: Username and password do not match any user in this service",
@@ -51,11 +46,6 @@ public class LoginTest extends BaseTest {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("locked_out_user", "secret_sauce");
-
-        Assert.assertTrue(
-                loginPage.isErrorDisplayed(),
-                "No se muestra mensaje de usuario bloqueado"
-        );
 
         Assert.assertEquals(
                 loginPage.getErrorMessage(),

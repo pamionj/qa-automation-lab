@@ -2,23 +2,26 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.WaitUtils;
 
 public class InventoryPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
+    private final WaitUtils wait;
 
-    private By inventoryContainer = By.id("inventory_container");
-    private By pageTitle = By.className("title");
+    private final By title = By.className("title");
+    private final By inventoryContainer = By.id("inventory_container");
 
     public InventoryPage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WaitUtils(driver);
     }
 
-    public boolean isInventoryDisplayed() {
-        return driver.findElement(inventoryContainer).isDisplayed();
+    public boolean isInventoryVisible() {
+        return wait.waitForVisibility(inventoryContainer).isDisplayed();
     }
 
     public String getPageTitle() {
-        return driver.findElement(pageTitle).getText();
+        return wait.waitForVisibility(title).getText();
     }
 }
