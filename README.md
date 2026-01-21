@@ -112,7 +112,7 @@ Failures: 0
 
 ---
 
-🔐 Manejo de credenciales y variables de entorno
+## 🔐 Manejo de credenciales y variables de entorno
 
 Este proyecto no expone credenciales en el código fuente.
 
@@ -120,11 +120,11 @@ Las credenciales utilizadas en los tests se obtienen mediante variables de entor
 
 Esto permite:
 
-Evitar hardcodear usuarios y contraseñas en el repositorio
+- Evitar hardcodear usuarios y contraseñas en el repositorio
 
-Ejecutar los tests en distintos entornos (local, CI, server)
+- Ejecutar los tests en distintos entornos (local, CI, server)
 
-Facilitar la integración con pipelines de CI/CD
+- Facilitar la integración con pipelines de CI/CD
 
 Variables de entorno requeridas
 
@@ -142,13 +142,61 @@ setx SAUCE_INVALID_PASSWORD "password_invalida"
 setx SAUCE_LOCKED_USERNAME "locked_out_user"
 ````
 
-⚠️ Nota: después de ejecutar setx, es necesario cerrar y volver a abrir la terminal o el IDE para que las variables estén disponibles.
+⚠️ Nota: después de ejecutar setx, es necesario **cerrar y volver a abrir la terminal o el IDE** para que las variables estén disponibles.
 
-Uso en el código
+Uso en el código:
 
-El framework obtiene estas variables mediante una utilidad centralizada (EnvUtils), lo que evita dependencias directas con valores sensibles y mantiene el código limpio y escalable.
+El framework obtiene estas variables mediante una utilidad centralizada **(EnvUtils)**, lo que evita dependencias directas con valores sensibles y mantiene el código limpio y escalable. Este enfoque es utilizado en entornos reales de automatización y servidores CI.
 
-Este enfoque es el mismo utilizado en entornos reales de automatización y servidores CI.
+---
+
+### ⚙️ Ejecución en servidor / CI
+
+Este framework de automatización está diseñado para ejecutarse **tanto en entornos locales como en servidores de integración continua (CI)**.
+
+El proyecto **no depende de configuraciones locales específicas**, ya que:
+
+- Utiliza **variables de entorno** para credenciales y datos sensibles
+
+- La ejecución se realiza vía **Maven**, estándar en entornos CI
+
+- El navegador puede ejecutarse en modo **headless**
+
+- No requiere intervención manual ni UI local
+
+#### Ejecución por línea de comandos (server / CI)
+
+En un entorno de servidor o pipeline CI, los tests pueden ejecutarse mediante:
+
+````text
+mvn clean test
+````
+Siempre que las variables de entorno requeridas estén definidas previamente en el sistema o pipeline.
+
+**Modo Headless (recomendado para CI)**
+
+El framework permite ejecutar los tests en modo **headless**, lo cual es el comportamiento esperado en servidores sin interfaz gráfica.
+
+Este modo puede activarse mediante una variable de entorno o parámetro de ejecución (ejemplo):
+
+````text
+mvn clean test -Dheadless=true
+````
+**Preparado para CI/CD**
+
+Gracias a esta arquitectura, el proyecto es compatible con:
+
+- GitHub Actions
+
+- GitLab CI
+
+- Jenkins
+
+- Azure DevOps
+
+- Servidores Linux sin entorno gráfico
+
+La integración con pipelines CI/CD puede realizarse sin cambios en el código base.
 
 ---
 
@@ -159,16 +207,18 @@ Este enfoque es el mismo utilizado en entornos reales de automatización y servi
 - Validaciones basadas en UI real (no solo URLs)
 - Uso de selectores estables (`id`, `data-test`)
 - Separación clara entre lógica de test y lógica de página
+- Uso de esperas explícitas con WebDriverWait para estabilidad en UI.
 
 ---
 
 ## 🚀 Próximas mejoras (roadmap)
 
-- Agregar **esperas explícitas (WebDriverWait)**
+- Ejecución con **Docker**
+- Refactor **SOLID**
 - Captura de **screenshots en fallos**
 - Integración con **Postman para API testing**
 - Reportes de ejecución
-- Ejecución en modo **headless / CI**
+
 
 ---
 
