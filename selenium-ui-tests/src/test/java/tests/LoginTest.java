@@ -5,6 +5,8 @@ import pages.InventoryPage;
 import pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.EnvUtils;
+
 
 public class LoginTest extends BaseTest {
 
@@ -12,7 +14,11 @@ public class LoginTest extends BaseTest {
     public void loginConCredencialesValidas() {
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("standard_user", "secret_sauce");
+        String username = EnvUtils.getEnv("SAUCE_USERNAME");
+        String password = EnvUtils.getEnv("SAUCE_PASSWORD");
+
+        loginPage.login(username, password);
+
 
         InventoryPage inventoryPage = new InventoryPage(driver);
 
@@ -32,7 +38,11 @@ public class LoginTest extends BaseTest {
     public void loginConCredencialesInvalidas() {
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("usuario_invalido", "password_invalida");
+        String username = EnvUtils.getEnv("SAUCE_INVALID_USERNAME");
+        String password = EnvUtils.getEnv("SAUCE_INVALID_PASSWORD");
+
+        loginPage.login(username, password);
+
 
         Assert.assertEquals(
                 loginPage.getErrorMessage(),
@@ -45,7 +55,11 @@ public class LoginTest extends BaseTest {
     public void loginConUsuarioBloqueado() {
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("locked_out_user", "secret_sauce");
+        String username = EnvUtils.getEnv("SAUCE_LOCKED_USERNAME");
+        String password = EnvUtils.getEnv("SAUCE_PASSWORD");
+
+        loginPage.login(username, password);
+
 
         Assert.assertEquals(
                 loginPage.getErrorMessage(),

@@ -112,6 +112,46 @@ Failures: 0
 
 ---
 
+🔐 Manejo de credenciales y variables de entorno
+
+Este proyecto no expone credenciales en el código fuente.
+
+Las credenciales utilizadas en los tests se obtienen mediante variables de entorno, siguiendo buenas prácticas de seguridad y automatización profesional.
+
+Esto permite:
+
+Evitar hardcodear usuarios y contraseñas en el repositorio
+
+Ejecutar los tests en distintos entornos (local, CI, server)
+
+Facilitar la integración con pipelines de CI/CD
+
+Variables de entorno requeridas
+
+Antes de ejecutar los tests, es necesario definir las siguientes variables de entorno:
+
+Windows (PowerShell / CMD):
+
+````text
+setx SAUCE_USERNAME "standard_user"
+setx SAUCE_PASSWORD "secret_sauce"
+
+setx SAUCE_INVALID_USERNAME "usuario_invalido"
+setx SAUCE_INVALID_PASSWORD "password_invalida"
+
+setx SAUCE_LOCKED_USERNAME "locked_out_user"
+````
+
+⚠️ Nota: después de ejecutar setx, es necesario cerrar y volver a abrir la terminal o el IDE para que las variables estén disponibles.
+
+Uso en el código
+
+El framework obtiene estas variables mediante una utilidad centralizada (EnvUtils), lo que evita dependencias directas con valores sensibles y mantiene el código limpio y escalable.
+
+Este enfoque es el mismo utilizado en entornos reales de automatización y servidores CI.
+
+---
+
 ## 📌 Buenas prácticas aplicadas
 
 - Page Object Model (POM)
