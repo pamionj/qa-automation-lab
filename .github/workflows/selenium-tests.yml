@@ -21,6 +21,7 @@ jobs:
           java-version: '21'
 
       - name: Run Selenium tests
+        working-directory: selenium-ui-tests
         env:
           SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
           SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}
