@@ -1,5 +1,7 @@
 # 🧪 QA Automation Lab – Selenium + Java
 
+![CI - Selenium Tests](https://github.com/pamionj/qa-automation-lab/actions/workflows/selenium-tests.yml/badge.svg)
+
 Proyecto de laboratorio de **QA Automation** enfocado en demostrar habilidades prácticas en pruebas automatizadas **UI (End-to-End)** utilizando **Selenium WebDriver, Java y TestNG**, aplicando buenas prácticas usadas en entornos reales de trabajo.
 
 El sistema bajo prueba (SUT) es **SauceDemo**:  
@@ -200,6 +202,52 @@ La integración con pipelines CI/CD puede realizarse sin cambios en el código b
 
 ---
 
+## ⚙️ Ejecución en CI (GitHub Actions)
+
+Este proyecto cuenta con **Integración Continua (CI)** mediante **GitHub Actions**, lo que permite ejecutar automáticamente los tests de Selenium en cada `push` o `pull request` al repositorio.
+
+### ¿Qué ocurre en CI?
+
+- GitHub Actions levanta un runner Linux (`ubuntu-latest`)
+- Se configura Java y Maven
+- Se ejecutan los tests con `mvn clean test`
+- Selenium utiliza **Chrome en modo headless**
+- El pipeline falla si algún test falla
+
+Esto permite validar el correcto funcionamiento de los tests sin necesidad de ejecutar nada localmente.
+
+### Workflow utilizado
+
+El workflow se encuentra en la siguiente ruta:
+
+.github/workflows/selenium-tests.yml
+
+
+### Diferencia entre ejecución local y CI
+
+- **Local**:  
+  - Chrome se abre normalmente (modo gráfico)
+  - Ideal para desarrollo y debugging
+
+- **CI (GitHub Actions)**:  
+  - Chrome se ejecuta en modo **headless**
+  - Detectado automáticamente mediante la variable de entorno `CI`
+  - No requiere cambios manuales ni flags adicionales
+
+### Ejecución automática
+
+Los tests se ejecutan automáticamente cuando:
+- Se realiza un `push` al repositorio
+- Se abre o actualiza un `pull request`
+
+El estado del pipeline puede revisarse en la pestaña **Actions** del repositorio.
+
+✔ Esto asegura que el proyecto es **ejecutable en servidor / CI**  
+✔ No depende de entorno local  
+✔ Es apto para flujos profesionales de QA Automation
+
+---
+
 ## 📌 Buenas prácticas aplicadas
 
 - Page Object Model (POM)
@@ -218,7 +266,6 @@ La integración con pipelines CI/CD puede realizarse sin cambios en el código b
 - Captura de **screenshots en fallos**
 - Integración con **Postman para API testing**
 - Reportes de ejecución
-
 
 ---
 
