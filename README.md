@@ -3,6 +3,7 @@
 ![CI - Selenium Tests](https://github.com/pamionj/qa-automation-lab/actions/workflows/selenium-tests.yml/badge.svg)
 ![Java](https://img.shields.io/badge/Java-21%20LTS-blue)
 ![Selenium](https://img.shields.io/badge/Selenium-4.x-brightgreen)
+![Maven](https://img.shields.io/badge/Maven-3.x-C71A36?logo=apachemaven&logoColor=white)
 
 Proyecto de laboratorio de **QA Automation** enfocado en demostrar habilidades prácticas en pruebas automatizadas **UI (End-to-End)** utilizando **Selenium WebDriver, Java, TestNG y Maven**, aplicando buenas prácticas usadas en entornos reales de trabajo. Preparado para ejecución local y CI.
 
@@ -277,5 +278,12 @@ El estado del pipeline puede revisarse en la pestaña **Actions** del repositori
 Ingeniería Informática | Cybersecurity, QA & Automation Enthusiast  
 
 ---
+## 📄 Licencia
+
+Este proyecto está bajo la licencia MIT.
+
+Puedes usar, copiar, modificar y distribuir este código libremente, siempre que se mantenga el aviso de copyright original.
+
+Ver archivo `LICENSE` para más detalles.
 
  *Este proyecto forma parte de mi portafolio personal para hacer una demostración de QA / QA Automation.*
