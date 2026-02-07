@@ -282,8 +282,6 @@ Ingeniería Informática | Cybersecurity, QA & Automation Enthusiast
 
 Este proyecto está bajo la licencia MIT.
 
-Puedes usar, copiar, modificar y distribuir este código libremente, siempre que se mantenga el aviso de copyright original.
-
 Ver archivo `LICENSE` para más detalles.
 
  *Este proyecto forma parte de mi portafolio personal para hacer una demostración de QA / QA Automation.*
